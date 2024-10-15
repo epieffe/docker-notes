@@ -43,18 +43,26 @@ The following flags for the `docker run` command can override the healthcheck de
 
 ### Docker commit
 If you make changes inside a container you can commit the container's file changes or settings into a new image:
-```dockerfile
+```
 docker container commit <container-id> <image-tag>
 ```
 
 Use the `--change` option (or `-c`) to apply Dockerfile instructions to the created image, for example:
-```dockerfile
+```
 docker commit -c='CMD ["sh"]' -c "EXPOSE 80" -c "ENV DEBUG=true" c3f279d17e0a  myimage:v2
 ```
 
 By default the container is paused during commit.
 
 Use `--pause false` option to avoid pausing the container during commit.
+
+### Image layers
+Use the following command to view all the layers of a Docker image:
+```
+dokcer image history <image-id>
+```
+
+Every container adds a writable layer on top of its image.
 
 ## Exam questions
 This section contains arguments likeky to be present in the exam.
