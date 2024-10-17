@@ -64,6 +64,24 @@ dokcer image history <image-id>
 
 Every container adds a writable layer on top of its image.
 
+### Inspecting Docker images
+Use `docker image inspect` to inspect images. use the `--format` options (or `-f`) to print only specific informations.
+
+Print image id:
+```
+dokcer image inspect -f {{.Id}}
+```
+
+Print container config as JSON:
+```
+dokcer image inspect -f {{json .ContainerConfig}}
+```
+
+Print container hostname:
+```
+dokcer image inspect -f {{.ContainerConfig.Hostname}}
+```
+
 ## Exam questions
 This section contains arguments likeky to be present in the exam.
 
