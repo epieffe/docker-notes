@@ -87,6 +87,14 @@ Command `docker image prune` removes all dangling images (not tagged and not ref
 
 Use the `--all` option (or `-a`) to remove all images not referenced by any container.
 
+### Flattening Docker images
+Images can be flattened to a single layer. This might be usefull to reduce an image overall size. The trick is to export the image from a container and import it back:
+```
+docker run -d --name mycontainer mysql
+docker export --output flattened-image.tar mycontainer
+cat flattened-image.tar | docker import - myimage:latest
+```
+
 ## Exam questions
 This section contains arguments likeky to be present in the exam.
 
