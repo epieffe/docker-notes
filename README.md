@@ -65,7 +65,7 @@ dokcer image history <image-id>
 Every container adds a writable layer on top of its image.
 
 ### Inspecting Docker images
-Use `docker image inspect` to inspect images. use the `--format` options (or `-f`) to print only specific informations.
+Use `docker image inspect` to inspect images. use the `--format` option (or `-f`) to print only specific informations.
 
 Print image id:
 ```
@@ -81,6 +81,11 @@ Print container hostname:
 ```
 dokcer image inspect -f {{.ContainerConfig.Hostname}}
 ```
+
+### Pruning Docker images
+Command `docker image prune` removes all dangling images (not tagged and not referenced by any container).
+
+Use the `--all` option (or `-a`) to remove all images not referenced by any container.
 
 ## Exam questions
 This section contains arguments likeky to be present in the exam.
