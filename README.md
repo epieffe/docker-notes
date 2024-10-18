@@ -91,8 +91,22 @@ Use the `--all` option (or `-a`) to remove all images not referenced by any cont
 Images can be flattened to a single layer. This might be usefull to reduce an image overall size. The trick is to export the image from a container and import it back:
 ```
 docker run -d --name mycontainer mysql
-docker export --output flattened-image.tar mycontainer
-cat flattened-image.tar | docker import - myimage:latest
+docker container export --output flattened-image.tar mycontainer
+cat flattened-image.tar | docker image import - myimage:latest
+```
+
+### Export Docker images
+Use `docker image save` to export an image with all tags and all layers.
+```
+docker image save ubuntu > ubuntu.tar
+```
+You can select only specific tags:
+```
+ docker save -o ubuntu.tar ubuntu:lucid ubuntu:saucy
+```
+Use `docker image load` to restore the image:
+```
+docker image load --input ubuntu.tar
 ```
 
 ### Docker search
