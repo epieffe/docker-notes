@@ -95,6 +95,14 @@ docker export --output flattened-image.tar mycontainer
 cat flattened-image.tar | docker import - myimage:latest
 ```
 
+### Docker search
+You can search for images on Docker Hub using the `docker search` command.
+
+Use the `--filter` option to add some filters and the `--limit` option to limit the result.
+```
+docker search --filter stars=10 --filter is-official=true --limit 10 debian
+```
+
 ## Exam questions
 This section contains arguments likeky to be present in the exam.
 
