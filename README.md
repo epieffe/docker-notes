@@ -117,6 +117,28 @@ Use the `--filter` option to add some filters and the `--limit` option to limit 
 docker search --filter stars=10 --filter is-official=true --limit 10 debian
 ```
 
+### Networking
+We have three network drivers: **bridge** (default), **host** and **none**.
+
+#### Bridge
+Docker lets containers connected to the same bridge network communicate, while providing isolation from containers that aren't connected to that bridge network.
+
+A default bridge network is created automatically, and newly-started containers connect to it unless otherwise specified.
+
+**User defined bridge networks are superior** to the default bridge network:
+- User-defined bridges provide automatic DNS resolution between containers
+- Containers can be attached and detached from user-defined networks on the fly
+- User-defined networks can be configured at creation time
+- Linked containers on the default bridge network share environment variables
+
+#### Host
+The container's network stack isn't isolated from the Docker host and the container doesn't get its own IP-address. For instance, if you run a container which binds to port 80 and you use host networking, the container's application is available on port 80 on the host's IP address.
+
+Usefull for network-monitoring applications running in a Docker container.
+
+#### None
+The container is completely isolated from other containers and the external world.
+
 ## Exam questions
 This section contains arguments likeky to be present in the exam.
 
