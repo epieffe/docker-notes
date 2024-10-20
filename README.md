@@ -148,3 +148,15 @@ This section contains arguments likeky to be present in the exam.
 `ADD` does the same thing, but if the source is a local tar archive, it is decompressed and extracted to the specified destination.
 
 `ADD` also supports URLs as source, but this is discouraged, you should use *curl* or *wget* to fetch files from remote URLs.
+
+### Multiple ways to scale Swarm services
+There are two approaches for scaling a service to the desired number of replicas. The following commands are equivalent:
+```
+docker service scale service01=3
+docker service update --replicas 3 service01
+```
+The difference is that with `docker service scale` you can scale multiple services at once:
+```
+docker service scale service01=3 service02=5
+```
+
