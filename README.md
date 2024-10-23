@@ -169,4 +169,22 @@ Docker creates IPSEC tunnels between the nodes to communicate. The manager nodes
 
 Encryption is not supported on Windows. Windows nodes won't be able to communicate, but no error will be detected.
 
+### Creating containers and services using templates
+When creating a service or a container you can use templates on some options. Example:
+```
+docker service create --hostname="{{{{.Node.Hostname}}-{{.Service.Name}}" ubuntu
+```
+These are all the valid placeholder values:
+- .Service.ID
+- .Service.Name
+- .Service.Labels
+- .Node.ID
+- .Node.Hostname
+- .Task.ID
+- -Task.Name
+- .Task.Slot
 
+Placeholders are only supported for the following flags:
+- --hostname
+- --env
+- --mount
