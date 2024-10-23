@@ -160,3 +160,13 @@ The difference is that with `docker service scale` you can scale multiple servic
 docker service scale service01=3 service02=5
 ```
 
+### Overlay network encryption
+To enable encryption on overlay network use the `--opt encrypted` flag a when creating the network:
+```
+docker network create --opt encrypted --driver overlay mynetwork
+```
+Docker creates IPSEC tunnels between the nodes to communicate. The manager nodes automatically rotate encryption keys every 12 hours.
+
+Encryption is not supported on Windows. Windows nodes won't be able to communicate, but no error will be detected.
+
+
