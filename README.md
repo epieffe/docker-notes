@@ -139,6 +139,22 @@ Usefull for network-monitoring applications running in a Docker container.
 #### None
 The container is completely isolated from other containers and the external world.
 
+## Docker Swarm
+This section contains info about Docker Swarm
+
+### Manager-only nodes
+The manager nodes in a swarm cluster can be assigned tasks. It is recommended to drain manager nodes so that they won't run any service and can use all the available resources for manager-related activities.
+```
+docker node update --availability drain <node-id>
+```
+
+### Forcing new cluster
+In case manager quorum is lost and the lost manager nodes are unrecoverable the recommended way to restore the cluster is to re-initialize the cluster on a running manager node:
+```
+docker swarm init --force-new-cluster --advertise-addr <ip-addr>:2377
+```
+The state of the cluster will be recovered from the distributed state store.
+
 ## Exam questions
 This section contains arguments likeky to be present in the exam.
 
