@@ -185,8 +185,8 @@ Docker creates IPSEC tunnels between the nodes to communicate. The manager nodes
 
 Encryption is not supported on Windows. Windows nodes won't be able to communicate, but no error will be detected.
 
-### Creating containers and services using templates
-When creating a service or a container you can use templates on some options. Example:
+### Creating services using templates
+When creating a service  you can use templates on some options. Example:
 ```
 docker service create --hostname="{{{{.Node.Hostname}}-{{.Service.Name}}" ubuntu
 ```
@@ -204,3 +204,14 @@ Placeholders are only supported for the following flags:
 - --hostname
 - --env
 - --mount
+
+### Docker system commands
+Some usefull commands:
+
+`docker system df`: displays information about the amount of space used by Docker.
+
+`docker system events`: displays events in real time. Use `--since` and `--until` options to display events in a specific period of time.
+
+`docker system prune`: removes unused containers, networks, images, and optionally, volumes.
+
+`docker system info`: Displays system wide information.
