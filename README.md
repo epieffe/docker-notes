@@ -215,3 +215,10 @@ Some usefull commands:
 `docker system prune`: removes unused containers, networks, images, and optionally, volumes.
 
 `docker system info`: Displays system wide information.
+
+### DTR Backup
+Use the following command to backup DTR configurations and images metadata:
+```
+docker run --log-driver none -i --rm docker/dtr backup --ucp-url https://172.31.40.237 -ucp-insecure-tls --ucp-username admin --ucp-password YOUR-PASSWORD-HERE > backup.tar
+```
+**Note**: it does not backup users, organizations or images.
